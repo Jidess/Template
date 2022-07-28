@@ -1,0 +1,18 @@
+#--------------------------------------------------
+# Répertoire : /controllers/
+#--------------------------------------------------
+
+# Le serveur doit suivre les liens symboliques :
+Options +FollowSymlinks
+
+# Activation du module de réécriture d'URL :
+RewriteEngine on
+
+#--------------------------------------------------
+# Règles de réécriture d'URL :
+#--------------------------------------------------
+
+# Article sans numéro de page :
+RewriteRule "home.html"   "/controllers/homeCtrl.php" [L]
+
+ErrorDocument "404" "/404.php"
