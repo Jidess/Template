@@ -1,3 +1,32 @@
+<?php
+    
+
+   
+    try {
+        
+        $sth = $pdo->query('SELECT * FROM clients');
+        $clients = $sth->fetchAll(PDO::FETCH_OBJ);
+
+        $sth = $pdo->query('SELECT type FROM showtypes');
+        $showtypes = $sth->fetchAll(PDO::FETCH_OBJ);
+
+        $sth = $pdo->query('SELECT lastName , firstName  FROM clients LIMIT 20');
+        $clients20 = $sth->fetchAll(PDO::FETCH_OBJ);
+
+        $sth = $pdo->query('SELECT lastName , firstName  FROM clients WHERE `card` = 1');
+        $clientfidel = $sth->fetchAll(PDO::FETCH_OBJ);
+
+
+        $sth = $pdo->query('SELECT lastName , firstName  FROM clients WHERE lastName LIKE "M%" ORDER BY lastName ASC');
+        $clientM = $sth->fetchAll(PDO::FETCH_OBJ);
+    } catch (PDOException $ex) {
+        echo 'erreur de requette' . $ex->getMessage();
+        die();
+    }
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,6 +38,15 @@
 </head>
 <body>
     
+
+<pre>
+    <?= //var_dump($clients); 
+        //var_dump($showtypes);
+        //var_dump($clients20);
+        //var_dump($clientfidel);
+        var_dump($clientM);?>
+</pre>
+
 
 
     <script src="public/assets/js/app.js"></script>
